@@ -4,48 +4,48 @@
 
 %% Print the title
 {\makeatletter
-\largetitlestyle\fontsize{45}{45}\selectfont\@title
+\color{qut-blue}\largetitlestyle\fontsize{36}{36}\selectfont\@title
 \makeatother}
 
 %% Print the subtitle
-{\makeatletter
-\ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{20}{20}\selectfont\@subtitle}
-\makeatother}
+% {\makeatletter
+% \ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{20}{20}\selectfont\@subtitle}
+% \makeatother}
 
 \bigskip
 \bigskip
 
-by
+%by
 
 \bigskip
 \bigskip
 
 %% Print the name of the author
-{\makeatletter
-\largetitlestyle\fontsize{25}{25}\selectfont\@author
-\makeatother}
+% {\makeatletter
+% \largetitlestyle\fontsize{25}{25}\selectfont\@author
+% \makeatother}
 
 \bigskip
 \bigskip
 
 %% Print table with names and student numbers
-\setlength\extrarowheight{2pt}
-\begin{tabular}{lc}
-    Student Name & Student Number \\\hline
-    Name & Number \\
-    (...) \\
-\end{tabular}
+%\setlength\extrarowheight{2pt}
+% \begin{tabular}{lc}
+%     Student Name & Student Number \\\hline
+%     Name & Number \\
+%     (...) \\
+% \end{tabular}
 
 \vfill
 
 %% Print some more information at the bottom
-\begin{tabular}{ll}
-    Instructor: & Name \\
-    Teaching Assistant: & Name \\
-    Institution: & Delft University of Technology \\
-    Place: & Faculty of Aerospace Engineering, Delft \\
-    Project Duration: & Month, Year - Month, Year
-\end{tabular}
+% \begin{tabular}{ll}
+%     Instructor: & Name \\
+%     Teaching Assistant: & Name \\
+%     Institution: & Delft University of Technology \\
+%     Place: & Faculty of Aerospace Engineering, Delft \\
+%     Project Duration: & Month, Year - Month, Year
+% \end{tabular}
 
 \vspace{1cm}
 \small{Cover Image: Description + Source}
@@ -53,9 +53,10 @@ by
 \end{center}
 
 %% Insert the TU Delft logo at the bottom of the page
+\vspace{1cm}
 \begin{tikzpicture}[remember picture, overlay]
     \node at (current page.south)[anchor=south,inner sep=10pt]{
-        \includegraphics{layout/tudelft/logo-black}
+        \includegraphics[scale=0.5]{layout/qut/QUTlogo–Blue–CMYK.eps}
     };
 \end{tikzpicture}
 
