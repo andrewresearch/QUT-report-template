@@ -1,7 +1,8 @@
-% This class provides an unofficial alternative to the original TU Delft
-% template for reports. It features a redesigned cover page and a
-% rewritten class file for easier customization.
+% This class is based on an unofficial alternative to the original TU Delft
+% template for reports.
 %
+% Adapted for QUT by Andrew Gibson (https://github.com/andrewresearch)
+% derived from...
 % Rewritten template by Daan Zwaneveld (dzwaneveld.github.io). Original
 % template by TU Delft (https://www.tudelft.nl/huisstijl/downloads/).
 %
@@ -11,11 +12,11 @@
 
 %% Class is based on the default book class and options will be passed
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{layout/tudelft-report}[16-05-2021 v1.4.1 TU Delft Report Class]
+\ProvidesClass{layout/qut-report}[21-09-06 v0.1 QUT Report Class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[10pt,oneside]{book}
+\LoadClass[12pt,oneside]{book}
 
 %% Main packages in the document
 \RequirePackage{amsmath}    % Mathematics
@@ -62,12 +63,15 @@
 
 \newcommand*\subtitle[1]{\def\@subtitle{#1}}
 \newcommand*\coverimage[1]{\def\@cover@image{#1}}
-\newcommand\subject[1]{\def\@subject{#1}}
+%\newcommand\subject[1]{\def\@subject{#1}}
 
 %% Some of the TU Delft house style colours
-\definecolor{tudelft-cyan}{cmyk}{1,0,0,0}
-\definecolor{tudelft-black}{cmyk}{0,0,0,1}
-\definecolor{tudelft-white}{cmyk}{0,0,0,0}
+%\definecolor{tudelft-cyan}{cmyk}{1,0,0,0}
+\definecolor{qut-navy}{cmyk}{0.95,0.8,0.4,0.5}
+\definecolor{qut-blue}{cmyk}{1,0.57,0,0.38}
+\definecolor{qut-cyan}{cmyk}{1,0.1,0,0}
+\definecolor{qut-black}{cmyk}{0,0,0,1}
+\definecolor{qut-white}{cmyk}{0,0,0,0}
 
 %% Scaling the margins to be slightly smaller than default (.7)
 \geometry{a4paper,hscale=0.75,vscale=0.8}
@@ -96,7 +100,7 @@
     \def\titlestyle{}
 
     %% Warning when using pdfLaTeX
-    \@latex@warning@no@line{You are using pdfLaTeX as compiler. Consider changing the compiler to XeLaTeX or LuaLaTeX to adhere to the TU Delft house style}
+    \@latex@warning@no@line{You are using pdfLaTeX as compiler. Consider changing the compiler to XeLaTeX or LuaLaTeX to adhere to the QUT house style}
 \else
     %% If XeLaTeX or LuaLaTeX is set as the compiler, the TU Delft house style fonts are used
     \RequirePackage{fontspec} % Custom fonts
@@ -106,11 +110,12 @@
     \setmathsf{Arial}
     \setmathtt{Arial}
 
-    \newfontfamily\tudtitlefamily[Path=layout/tudelft/]{TUDelft-UltraLight.ttf}
+    %\newfontfamily\tudtitlefamily[Path=layout/tudelft/]{TUDelft-UltraLight.ttf}
+    \newfontfamily\quttitlefamily{Arial}
     \newfontfamily\quotefont{Georgia}
 
     %% Defining commands to be used in layout
-    \def\largetitlestyle{\tudtitlefamily}
+    \def\largetitlestyle{\quttitlefamily}
     \def\titlestyle{\normalfont}
 
     %% Changing the quote environment to use Georgia
@@ -122,33 +127,33 @@
 %% Formatting chapter titles and spacing
 \titleformat{\chapter}[display]
     {\flushright}
-    {\fontsize{96}{96}\selectfont\largetitlestyle\thechapter}
+    {\color{qut-cyan}\fontsize{48}{48}\selectfont\largetitlestyle\thechapter}
     {0pt}
-    {\Huge\titlestyle}
+    {\Huge\titlestyle\color{qut-blue}}
 \titlespacing*{\chapter}{0pt}{0pt}{2\baselineskip}
 
 %% Formatting section titles and spacing
 \titleformat{\section}
-    {\Large\titlestyle\bfseries}
+    {\color{qut-navy}\Large\titlestyle\bfseries}
     {\thesection.}
     {5pt}
-    {}
+    {\color{qut-navy}}
 \titlespacing*{\section}{0pt}{\baselineskip}{0pt}
 
 %% Formatting subsections titles and spacing
 \titleformat{\subsection}
-    {\large\titlestyle\bfseries}
+    {\color{qut-blue}\large\titlestyle\bfseries}
     {\thesubsection.}
     {5pt}
-    {}
+    {\color{qut-blue}}
 \titlespacing*{\subsection}{0pt}{\baselineskip}{0pt}
 
 %% Formatting subsubsections titles and spacing
 \titleformat{\subsubsection}
-    {\titlestyle\bfseries}
+    {\color{qut-cyan}\titlestyle\bfseries}
     {}
     {0pt}
-    {}
+    {\color{qut-cyan}}
 \titlespacing*{\subsubsection}{0pt}{\bigskipamount}{0pt}
 
 %% Changing font and spacing in the table of contents
@@ -160,7 +165,7 @@
 
 %% Adding a head rule to pages
 \renewcommand*\headrule{%
-    {\hrule\@height\headrulewidth\@width\headwidth}%
+    {\color{qut-cyan}\hrule\@height\headrulewidth\@width\headwidth}%
     \vskip-\headrulewidth}
 
 %% Page style for title pages
@@ -200,15 +205,15 @@
     \node[above=0,inner sep=0] at (current page.south) {\includegraphics[width=\paperwidth]{\@cover@image}};
 
     \node[rotate=90,below right=4cm and .3cm] at (current page.west) {%
-        \titlestyle\color{white} Delft University of Technology};
+        \titlestyle\color{white} Queensland University of Technology};
 
     \node[above right=0.2cm and 0.6cm] at (current page.south west) {%
-        \includegraphics[width=0.35\linewidth]{layout/tudelft/logo-white.pdf}};
+        \includegraphics[width=0.35\linewidth]{layout/qut/logo-white.pdf}};
 
-    \node[below=2cm,fill=tudelft-black,minimum width={\paperwidth},inner ysep=25pt,opacity=0.7,text opacity=1] at (current page.north) {%
+    \node[below=2cm,fill=qut-black,minimum width={\paperwidth},inner ysep=25pt,opacity=0.7,text opacity=1] at (current page.north) {%
         \begin{minipage}{0.9\paperwidth}
-            \largetitlestyle\fontsize{50}{50}\selectfont\color{title}\@title \\[0.5ex]
-            \ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{22}{22}\selectfont\color{white}\@subtitle \\[2.5ex]}
+            \largetitlestyle\fontsize{50}{50}\selectfont\color{qut-white}\@title \\[0.5ex]
+            \ifdefvoid{\@subtitle}{}{\titlestyle\fontsize{22}{22}\selectfont\color{qut-cyan}\@subtitle \\[2.5ex]}
             \ifdefvoid{\@subject}{}{\titlestyle\fontsize{22}{22}\selectfont\color{white}\@subject \\[0.5ex]}
             \largetitlestyle\fontsize{24}{24}\selectfont\color{white}\@author
         \end{minipage}};
